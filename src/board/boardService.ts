@@ -8,4 +8,8 @@ const save = async (title:string , content:string) =>{
     return await boardRepository.save(title , content);
 }
 
-export default {findAll , save}
+const findById = async (id:string) =>{
+    return await boardRepository.findById(id);
+}
+
+export default {findAll , save , findById}

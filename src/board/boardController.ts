@@ -8,10 +8,15 @@ const findAll = async (req: Request, res: Response)=> {
 
 const save = async (req: Request, res: Response)=> {
     const {title , content} = req.body;
-    res.json(ApiResponse.success(201 , "저장 성공" , await boardService.save(title , content)));
+    res.status(201).json(ApiResponse.success(201 , "저장 성공" , await boardService.save(title , content)));
+}
+
+const findById = async (req: Request, res: Response)=> {
+    res.status(200).json(ApiResponse.success(200 , "조회 성공" , await boardService.findById))
 }
 
 export default {
     findAll
     , save
+    ,findById
 };

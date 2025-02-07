@@ -27,4 +27,24 @@ const save = async (title: string, content: string): Promise<void> => {
     }
 };
 
-export default {findAll , save};
+const findById = async (id: string): Promise<{ title: string, content: string }> => {
+    try {
+        // Redis에서 게시글 데이터를 조회
+        const boardKey = `board:${id}`; // 게시글 ID에 매핑된 Redis 키
+        const boardData = await redisConfig.hGetAll(boardKey); // Redis hash 값을 조회
+
+        if (!boardData || Object.keys(boardData).length === 0) {
+            throw new Error(`게시글 ID(${id})에 대한 데이터가 없습니다.`);
+        }
+
+        return {
+            title: boardData.title,
+            content: boardData.content,
+        };
+    } catch (error) {
+        console.error(`❌ 게시글 조회 중 오류 발생:`, error);
+        throw error; // 에러 재전달
+    }
+};
+
+export default {findAll , save , findById};
