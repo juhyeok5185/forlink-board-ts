@@ -1,15 +1,20 @@
 {
   "name": "forlink-board-ts",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/redis": "^4.0.10",
+    "cors": "^2.8.5",
     "express": "^4.21.2"
   },
   "devDependencies": {
