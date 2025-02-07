@@ -15,7 +15,7 @@ router.get("/:id", boardController.findById);
 // // 특정 게시글 수정
 // router.put("/:id", boardController.update);
 //
-// // 특정 게시글 삭제
+// 특정 게시글 삭제 추가
 // router.delete("/:id", boardController.deleteById);
 
 export default router;
